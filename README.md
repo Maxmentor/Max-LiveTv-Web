@@ -59,13 +59,7 @@ e.g.  Hindi,Tamil,Kannada,Odia ...
 
 <h2>🍁 HOW TO USE : </h2>
 
-## 🔐 Login Method 1 :
-
-### First Download This Application
-
-- KSWEB PRO ( Php Web Server ) <br>
-
-
+- <br>
 • Install KsWeb App https://dl1.apkhome.net/2019/6/KSWEB-3.93%20Pro.apk <br>
 • Extrac All Files In Htdocs Folder.<br>
 • Open Ksweb app & Goto: http://localhost:8080<br>

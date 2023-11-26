@@ -65,11 +65,11 @@ e.g.  Hindi,Tamil,Kannada,Odia ...
 
 - KSWEB PRO ( Php Web Server ) <br>
 
-```bash
+
 • Install KsWeb App https://dl1.apkhome.net/2019/6/KSWEB-3.93%20Pro.apk 
 • Extrac All Files In Htdocs Folder.
 • Open Ksweb app & Goto: http://localhost:8080
-```
+
 • First Login With Jio Account , After Jogin You can paly All channles.
 
 *Note: SonyLiv Channels Working Only In Live Server. 

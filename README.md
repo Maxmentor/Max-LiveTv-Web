@@ -66,9 +66,9 @@ e.g.  Hindi,Tamil,Kannada,Odia ...
 - KSWEB PRO ( Php Web Server ) <br>
 
 
-• Install KsWeb App https://dl1.apkhome.net/2019/6/KSWEB-3.93%20Pro.apk 
-• Extrac All Files In Htdocs Folder.
-• Open Ksweb app & Goto: http://localhost:8080
+• Install KsWeb App https://dl1.apkhome.net/2019/6/KSWEB-3.93%20Pro.apk <br>
+• Extrac All Files In Htdocs Folder.<br>
+• Open Ksweb app & Goto: http://localhost:8080<br>
 
 • First Login With Jio Account , After Jogin You can paly All channles.
 

@@ -2301,32 +2301,32 @@ http://longstream-01.ajaah.com/PlayBoxTV/AasthaTV/playlist.m3u8
 
 
 
-#EXTM3U url-tvg="http://botallen.live/epg.xml.gz"
-#EXTINF:-1 tvg-id="" group-title="Shemaroo (comming soon)" tvg-logo="https://daex9l847wg3n.cloudfront.net/shemoutputimages/Shree-Mangal-Graha-Mandir,-Amalner,-Maharashtra/605d926ba609d294d7000015/medium_16_9_webp.webp?1629442229",Shree Mangal Graha Mandir, Amalner, Maharashtra
+#EX
+#EXTINF:-1 tvg-id="" group-title="Shemaroo" tvg-logo="https://daex9l847wg3n.cloudfront.net/shemoutputimages/Shree-Mangal-Graha-Mandir,-Amalner,-Maharashtra/605d926ba609d294d7000015/medium_16_9_webp.webp?1629442229",Shree Mangal Graha Mandir, Amalner, Maharashtra
 https://cdn.live.shemaroome.com/mangaldev/Stream1/chunklist.m3u8?hdnts=st%3D1701257894%7Eexp%3D1701268694%7Eacl%3D*%7Edata%3Dtestdata%7Ehmac%3D2c1efb7db4a95eafcefc19f962a638214626dd1549745f52bf8cc6bce3b5c09b
 
-#EXTINF:-1 tvg-id="" group-title="Shemaroo (comming soon)" tvg-logo="https://daex9l847wg3n.cloudfront.net/shemoutputimages/Shri-Hingulambika-Devi-Temple,-Solapur,-Maharashtra/5f8e9082a609d22c2d00000f/medium_16_9_webp.webp?1629441230",Shri Hingulambika Devi Temple, Solapur, Maharashtra
+#EXTINF:-1 tvg-id="" group-title="Shemaroo" tvg-logo="https://daex9l847wg3n.cloudfront.net/shemoutputimages/Shri-Hingulambika-Devi-Temple,-Solapur,-Maharashtra/5f8e9082a609d22c2d00000f/medium_16_9_webp.webp?1629441230",Shri Hingulambika Devi Temple, Solapur, Maharashtra
 https://cdn.live.shemaroome.com/hingulambika/smil:hingulambikaadp.smil/chunklist_b1128000_sleng.m3u8?hdnts=st%3D1701258226%7Eexp%3D1701269026%7Eacl%3D*%7Edata%3Dtestdata%7Ehmac%3D996483552f861789283894f7c1832e33442c9381bf2ab357fd9a09769d6ccec6
 
-#EXTINF:-1 tvg-id="" group-title="Shemaroo (comming soon)" tvg-logo="https://daex9l847wg3n.cloudfront.net/shemoutputimages/Prati-Shirdi,-Shirgaon,-Pune,-Live-Darshan/5bebf0d9a609d202b30000e3/medium_16_9_webp.webp?1599656198",Prati Shirdi, Shirgaon, Pune, Live Darshan
+#EXTINF:-1 tvg-id="" group-title="Shemaroo" tvg-logo="https://daex9l847wg3n.cloudfront.net/shemoutputimages/Prati-Shirdi,-Shirgaon,-Pune,-Live-Darshan/5bebf0d9a609d202b30000e3/medium_16_9_webp.webp?1599656198",Prati Shirdi, Shirgaon, Pune, Live Darshan
 https://pratishirdi.shemaroome.com/pratishirdi/smil:pratishirdiadp.smil/chunklist_b1128000_sleng.m3u8?hdnts=st%3D1701258285%7Eexp%3D1701269085%7Eacl%3D*%7Edata%3Dtestdata%7Ehmac%3D8326c462a67c399728ec6a3091b462a19eed9cda66218a2236a1f0f7169114f6
 
-#EXTINF:-1 tvg-id="" group-title="Shemaroo (comming soon)" tvg-logo="https://daex9l847wg3n.cloudfront.net/shemoutputimages/Shree-Shani-Shingnapur-Live-Darshan/5bebf0b1a609d202b30000e1/medium_16_9_webp.webp?1598528326",Shree Shani Shingnapur Live Darshan
+#EXTINF:-1 tvg-id="" group-title="Shemaroo" tvg-logo="https://daex9l847wg3n.cloudfront.net/shemoutputimages/Shree-Shani-Shingnapur-Live-Darshan/5bebf0b1a609d202b30000e1/medium_16_9_webp.webp?1598528326",Shree Shani Shingnapur Live Darshan
 https://cdn.live.shemaroome.com/shanidev/smil:shanidevadp.smil/chunklist_b1128000_sleng.m3u8?hdnts=st%3D1701258344%7Eexp%3D1701269144%7Eacl%3D*%7Edata%3Dtestdata%7Ehmac%3Dc77e8d4eb291636694b63f0f8d8d9368fca363216cd52844638ca65fe73371a3
 
-#EXTINF:-1 tvg-id="" group-title="Shemaroo (comming soon)" tvg-logo="https://daex9l847wg3n.cloudfront.net/shemoutputimages/ISKCON---Girgaon---Mumbai/5c63f7d5a609d27b8800000b/medium_16_9_webp.webp?1602223698",ISKCON - Girgaon - Mumbai
+#EXTINF:-1 tvg-id="" group-title="Shemaroo" tvg-logo="https://daex9l847wg3n.cloudfront.net/shemoutputimages/ISKCON---Girgaon---Mumbai/5c63f7d5a609d27b8800000b/medium_16_9_webp.webp?1602223698",ISKCON - Girgaon - Mumbai
 https://cdn.live.shemaroome.com/iskongirgoav/smil:iskongirgoavadp.smil/chunklist_b1128000_sleng.m3u8?hdnts=st%3D1701258389%7Eexp%3D1701269189%7Eacl%3D*%7Edata%3Dtestdata%7Ehmac%3D7aba50f0800b4eb305d3f6a4c511a0626d7ee40d4799f851532d4b2c012567a2
 
-#EXTINF:-1 tvg-id="" group-title="Shemaroo (comming soon)" tvg-logo="https://daex9l847wg3n.cloudfront.net/shemoutputimages/Mumba-Devi-Temple,-Mumbai,-Live-Darshan/5bebf032a609d202b30000df/medium_16_9_1672839698.jpg?1672841176",Mumba Devi Temple, Mumbai, Live Darshan
+#EXTINF:-1 tvg-id="" group-title="Shemaroo" tvg-logo="https://daex9l847wg3n.cloudfront.net/shemoutputimages/Mumba-Devi-Temple,-Mumbai,-Live-Darshan/5bebf032a609d202b30000df/medium_16_9_1672839698.jpg?1672841176",Mumba Devi Temple, Mumbai, Live Darshan
 https://cdn.live.shemaroome.com/mumbadevi/smil:mumbadeviadp.smil/chunklist_b1128000_sleng.m3u8?hdnts=st%3D1701258432%7Eexp%3D1701269232%7Eacl%3D*%7Edata%3Dtestdata%7Ehmac%3D082d8c87b4a5a9392dab2e0d55b4caa0f6e9fd11de0e36caa028faeea0f52d28
 
-#EXTINF:-1 tvg-id="" group-title="Shemaroo (comming soon)" tvg-logo="https://daex9l847wg3n.cloudfront.net/shemoutputimages/Mahalakshmi-Mandir,-Mumbai,-Live-Darshan/609e1a58a609d2dee4000025/medium_16_9.jpg?1620974162",Mahalakshmi Mandir, Mumbai, Live Darshan
+#EXTINF:-1 tvg-id="" group-title="Shemaroo" tvg-logo="https://daex9l847wg3n.cloudfront.net/shemoutputimages/Mahalakshmi-Mandir,-Mumbai,-Live-Darshan/609e1a58a609d2dee4000025/medium_16_9.jpg?1620974162",Mahalakshmi Mandir, Mumbai, Live Darshan
 https://cdn.live.shemaroome.com/mahalaxmi/smil:mahalaxmiadp.smil/chunklist_b1128000_sleng.m3u8?hdnts=st%3D1701258479%7Eexp%3D1701269279%7Eacl%3D*%7Edata%3Dtestdata%7Ehmac%3D78b3fb8400f2f11922ddc8b7df673c2fe06bf5700c4215d06281793b9f6e8fd0
 
-#EXTINF:-1 tvg-id="" group-title="Shemaroo (comming soon)" tvg-logo="https://daex9l847wg3n.cloudfront.net/shemoutputimages/Babulnath-Mandir-Mumbai/5c80f0bba609d25cc9000014/medium_16_9_1672839698.jpg?1672841116",Babulnath Mandir Mumbai -Live
+#EXTINF:-1 tvg-id="" group-title="Shemaroo" tvg-logo="https://daex9l847wg3n.cloudfront.net/shemoutputimages/Babulnath-Mandir-Mumbai/5c80f0bba609d25cc9000014/medium_16_9_1672839698.jpg?1672841116",Babulnath Mandir Mumbai -Live
 https://cdn.live.shemaroome.com/babulnath/smil:babulnathadp.smil/chunklist_b1128000_sleng.m3u8?hdnts=st%3D1701258791%7Eexp%3D1701269591%7Eacl%3D*%7Edata%3Dtestdata%7Ehmac%3D9fdf66fd650e30c517efd3fdd409eb9724aeb2d8fcca98f4a510cc4de3f735df
 
-#EXTINF:-1 tvg-id="" group-title="Shemaroo (comming soon)" tvg-logo="https://daex9l847wg3n.cloudfront.net/shemoutputimages/Morgaon-Temple,-Pune---Live-Darshan/63bffebf988cd4c91b4d9cde/medium_16_9_1673522362.jpg?1673526974",Morgaon Temple, Pune – Live Darshan
+#EXTINF:-1 tvg-id="" group-title="Shemaroo" tvg-logo="https://daex9l847wg3n.cloudfront.net/shemoutputimages/Morgaon-Temple,-Pune---Live-Darshan/63bffebf988cd4c91b4d9cde/medium_16_9_1673522362.jpg?1673526974",Morgaon Temple, Pune – Live Darshan
 https://cdn.live.shemaroome.com/morgaon/smil:morgaonsel.smil/chunklist_b1128000_sleng.m3u8?hdnts=st%3D1701259070%7Eexp%3D1701269870%7Eacl%3D*%7Edata%3Dtestdata%7Ehmac%3D7162509d85f0e42a73cd27b71372a0483ef55deb203a56a7d6731fab00ce0b8f
 
 

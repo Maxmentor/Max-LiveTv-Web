@@ -37,7 +37,7 @@
   <a href="epicon.php">Epic On <i class="fa fa-tv"></i></a>
  <!-- <a href="shemaroo.php">Shemaroo TV <i class="fa fa-tv"></i></a>-->
   <a href="aastha.php">Aastha TV <i class="fa fa-tv"></i></a>
-  <a href="sanskaar.php" class="active">Sanskar TV <i class="fa fa-tv"></i></a>
+  <a href="sanskaar.php" >Sanskar TV <i class="fa fa-tv"></i></a>
   <a href="ptcplay.php" >PTC Play <i class="fa fa-tv"></i></a>
   <div class="right-lnk">
   <a href="#" id="loginButtons">Login/JioTV</i></a>

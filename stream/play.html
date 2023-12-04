@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css">
+<link rel="stylesheet" href="./style.ccs">
+<script src="https://cdn.jsdelivr.net/npm/plyr@3.6.12/dist/plyr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.1.4/dist/hls.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js"></script>
+<script src="https://unpkg.com/plyr@3"></script>
+<script src="./plyr-hls.js"></script>
+
+    <title>Document</title>
+    <style>
+       
+.container {
+height: 100%;
+	margin: 0px auto;
+    width: 100%;
+}
+video {
+	width: 100%;
+}
+
+html {
+  font-family: Poppins;
+  background: #000;
+  margin: 0;
+  padding: 0
+}
+
+
+
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+  <video id="video" controls crossorigin playsinline type="application/x-mpegURL">
+  
+  </video>
+</div>
+
+
+        <script type="text/javascript">
+            var urlParams = new URLSearchParams(window.location.search);
+      var maxvalue=urlParams.get('max');
+
+
+
+      var video = document.getElementById('video');
+const url = maxvalue;
+
+const controls =
+[
+    'play-large', // The large play button in the center
+    'restart', // Restart playback
+    'rewind', // Rewind by the seek time (default 10 seconds)
+    'play', // Play/pause playback
+    'fast-forward', // Fast forward by the seek time (default 10 seconds)
+    'progress', // The progress bar and scrubber for playback and buffering
+    'current-time', // The current time of playback
+    'duration', // The full duration of the media
+    'mute', // Toggle mute
+    'volume', // Volume control
+    'captions', // Toggle captions
+    'settings', // Settings menu
+    'pip', // Picture-in-picture (currently Safari only)
+    'airplay', // Airplay (currently Safari only)
+   // 'download', // Show a download button with a link to either the current source or a custom URL you specify in your options
+    'fullscreen' // Toggle fullscreen
+];
+const defaultOptions = {};
+function updateQuality(newQuality) {
+    window.hls.levels.forEach((level, levelIndex) => {
+      if (level.height === newQuality) {
+        console.log("Found quality match with " + newQuality);
+        window.hls.currentLevel = levelIndex;
+      }
+    });
+  }
+
+ if (Hls.isSupported()) {
+    var hls = new Hls();
+    hls.loadSource(url);
+    //hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED, function(event,data) {     
+       // Transform available levels into an array of integers (height values).
+      var availableQualities = hls.levels.map((l) => l.height)
+
+        // Add new qualities to option
+        defaultOptions.quality = {
+          default: availableQualities[0],
+          options: availableQualities,
+          // this ensures Plyr to use Hls to update quality level
+          forced: true,        
+          onChange: (e) => updateQuality(e),
+        }
+        controls.control ={
+          controls:['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen'],
+        }
+          
+
+        // Initialize here
+        var player = new Plyr('video',defaultOptions,controls);
+        });
+        hls.attachMedia(video);
+  }
+  else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = url;
+    video.addEventListener('loadedmetadata', function(event,data) {
+      
+      var player = new Plyr('video',defaultOptions,controls);
+     
+    video.play();
+    });
+  }
+
+  
+
+  
+ 
+         
+        </script>
+      </div>
+    
+</body>
+</html>

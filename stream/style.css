@@ -1,0 +1,450 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+video::cue {
+  opacity: 0;
+}
+
+.caption_text {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  width: 90%;
+  max-width: 90%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  user-select: none;
+  transition: bottom 0.3s;
+}
+
+.caption_text.active {
+  bottom: 0%;
+}
+
+.caption_text mark {
+  background-color: #0000008f !important;
+  color: #fff;
+}
+
+
+.material-icons {
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+}
+
+body {
+  background-color: #002333;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 51px);
+  width: 100%;
+  padding: 1.7%;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Video player Styling */
+.container .video_player {
+  position: relative;
+  width: 700px;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+
+}
+.container .video_player .loader{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 60px;
+  height: 60px;
+  border: 4px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  z-index: 1;
+  animation: animate 0.6s linear infinite;
+  display: none;
+}
+@keyframes animate{
+  0%{
+    transform: translate(-50%,-50%) rotate(0deg);
+  }
+  100%{
+    transform: translate(-50%,-50%) rotate(360deg);
+  }
+}
+.container .video_player .thumbnail{
+  position: absolute;
+  bottom: 80px;
+  left: calc(var(--x) + 11px);
+  transform: translateX(-50%);
+  width: 165px;
+  height: 90px;
+  background: #fff;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  display: none;
+}
+.container .video_player .main-video {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+.video_player .progressAreaTime {
+  position: absolute;
+  left: calc(var(--x) + 11px);
+  transform: translateX(-50%);
+  bottom: 50px;
+  min-width: 60px;
+  text-align: center;
+  white-space: nowrap;
+  padding: 5px 10px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  z-index: 1;
+  display: none;
+}
+
+.container .video_player .controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  background: rgb(0 0 0 / 29%);
+  box-shadow: 0 0 40px 10px rgb(0 0 0 / 25%);
+  z-index: 3;
+  transform: translateY(180%);
+  transition: 0.3s;
+  padding: 0px 10px;
+}
+
+.container .video_player .controls.active {
+  transform: translateY(0);
+}
+
+.video_player .controls .progress-area {
+  width: 100%;
+  height: 5px;
+  margin: auto;
+  background: #f0f0f063;
+  cursor: pointer;
+  position: relative;
+}
+
+.controls .progress-area .progress-bar {
+  position: relative;
+  width: 0%;
+  background: rgb(255, 174, 0);
+  height: inherit;
+  border-radius: inherit;
+  cursor: pointer;
+}
+
+.controls .progress-area .progress-bar::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgb(255, 174, 0);
+}
+
+.controls .progress-area .bufferedBar{
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  width: 100%;
+  height: inherit;
+}
+
+.controls .controls-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 97%;
+  height: 46px;
+  margin: 0 auto;
+}
+
+.controls .controls-list .controls-left,
+.controls .controls-list .controls-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.controls .controls-left .timer {
+  display: inline-block;
+  font-size: 14px;
+  white-space: nowrap;
+  color: #fff;
+  margin-left: 5px;
+  text-align: center;
+}
+
+.controls .icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  margin-left: 8px;
+  margin-right: 5px;
+}
+
+.controls .icon .material-icons {
+  font-size: 26px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.controls .icon .material-icons.fast-rewind:active {
+  transition: 0.2s;
+  transform: rotate(-45deg);
+}
+
+.controls .icon .material-icons.fast-forward:active {
+  transition: 0.2s;
+  transform: rotate(45deg);
+}
+
+.controls .icon .volume_range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0px;
+  height: 3px;
+  background: #fff;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  transition: 0.4s;
+}
+
+.controls .icon .volume_range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  background: #fff;
+  color: #fff;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.controls .icon:hover .volume_range {
+  display: inline-block;
+  width: 60px;
+}
+
+.controls .icon:hover .volume_range::-webkit-slider-thumb {
+  opacity: 1;
+  pointer-events: auto;
+  transition: 0.5s;
+}
+
+.controls-right .icon .auto-play {
+  width: 30px;
+  height: 10px;
+  border-radius: 20px;
+  position: relative;
+  margin-right: 8px !important;
+  background: #b6b6b6;
+}
+
+.controls-right .icon .auto-play::before {
+  content: "\e034";
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 17px;
+  height: 17px;
+  line-height: 17px;
+  font-size: 14px;
+  background: #727272;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+  font-family: "Material Icons";
+}
+
+.controls-right .icon .auto-play.active::before {
+  content: "\e037";
+  left: 15px;
+  font-family: "Material Icons";
+}
+
+.controls-right .icon .material-icons.settingsBtn {
+  font-size: 24px;
+  transition: 0.3s;
+}
+
+.controls-right .icon .settingsBtn.active {
+  transform: rotate(45deg);
+}
+ 
+.video_player .captions,
+.video_player .settings {
+  position: absolute;
+  right: 25px;
+  bottom: 62px;
+  background: rgb(28 28 28 / 90%);
+  width: 200px;
+  max-height: 250px;
+  height: auto;
+  color: #fff;
+  overflow-y: auto;
+  z-index: 20;
+  display: none;
+  border-radius: 5px;
+}
+ 
+.video_player .captions.active,
+.video_player .settings.active {
+  display: block;
+}
+ 
+.video_player .captions .caption span,
+.video_player .settings > div > span {
+  font-size: 14px;
+  font-weight: 300;
+  padding: 15px 30px;
+  border-bottom: 1px solid rgb(83, 83, 83);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+}
+.video_player .settings > div .icon{
+  font-size: 14px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+.video_player .settings > div ul li span{
+ pointer-events: none;
+}
+
+.video_player .captions .caption ul,
+.video_player .settings > div ul {
+  position: relative;
+}
+
+.video_player .captions .caption ul li,
+.video_player .settings > div ul li {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+  padding: 12px 33px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+ .video_player .captions .caption ul li:hover,
+ .video_player .settings > div ul li:hover {
+  background: rgba(28, 28, 28, 0.9);
+}
+
+.video_player .captions .caption ul li.active::before,
+.video_player .settings > div ul li.active::before {
+  content: "\e876";
+  font-family: "Material Icons";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding-right: 10px;
+  font-size: 18px;
+}
+
+.video_player .captions::-webkit-scrollbar,
+.video_player .settings::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+.video_player .captions::-webkit-scrollbar-thumb,
+.video_player .settings::-webkit-scrollbar-thumb {
+  height: 20px;
+  border: 2px solid transparent;
+  background: rgba(83, 83, 83, 0.9);
+  border-radius: 20px;
+}
+
+footer {
+  padding: 15px 23px;
+  background: #1b1b1a;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+}
+
+footer a {
+  color: crimson;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 430px) {
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  .controls .icon {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 24px;
+  }
+
+  .volume,
+  .volume_range,
+  .auto-play,
+  .fast-forward,
+  .picture_in_picutre {
+    display: none;
+  }
+}

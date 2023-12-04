@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+body,
+#container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    color: #fff;
+    overflow: hidden;
+}
+#myElement {
+    height: 100vh !important;
+}
+body {
+    height: 100vh;
+}
+#container {
+    position: absolute;
+    text-align: center
+}
+
+video {
+    outline: 0
+}
+.jw-svg-icon-watermark  {
+    display: none !important;
+}
+    </style>
+</head>
+<body>
+
+    <div class='video'>
+        <script src="https://use.fontawesome.com/20603b964f.js"></script>
+        <script type="text/javascript" src="https://content.jwplatform.com/libraries/LJ361JYj.js"></script>
+        <script type="text/javascript">
+          jwplayer.key = 'ypdL3Acgwp4Uh2/LDE9dYh3W/EPwDMuA2yid4ytssfI=';
+          // jwplayer.key = 'ITWMv7t88JGzI0xPwW8I0+LveiXX9SWbfdmt0ArUSyc=';
+        </script>
+        
+        <div id="myElement"></div>
+        <script type="text/javascript">
+            var urlParams = new URLSearchParams(window.location.search);
+      var maxvalue=urlParams.get('max');
+
+
+          jwplayer("myElement").setup({
+            image: "",
+            //aspectratio: "16:9",
+            // width: '100%',
+            height: window.innerHeight,
+            autostart: false,
+            file : maxvalue,
+            title: 'Spidyworld',
+            description: 'github: @maxmentor',
+            aboutlink: 'https://www.jwplayer.com/',
+            tracks:[{"file":"<?php echo $cc; ?>","label":"Indonesia","kind":"captions","default":"true"}],
+            captions: {color: '#ffb800',fontSize: 30,backgroundOpacity: 0},
+            sharing: {
+              sites: ['facebook','twitter','tumblr','googleplus',{icon: '//support-static.jwplayer.com/images/awesome.svg', src: 'http://www.jwplayer.com/?', label:'jwplayer'}],
+              code: encodeURI("<iframe src='<?php echo $sharing;?>' width='480' height='320'></iframe>"),
+              link: "<?php echo $sharing;?>"
+            }
+          })
+        </script>
+      </div>
+    
+</body>
+</html>

@@ -1,0 +1,84 @@
+
+<html>
+
+<head>
+  <title>Kplay[Spidermax]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<link rel="shortcut icon" type="image/x-icon" href="">
+<script src="https://qa-apache-php7.dev.kaltura.com/p/1091/sp/109100/embedPlaykitJs/uiconf_id/15215933/partner_id/1091"></script>
+
+
+      <style>
+     *{
+      overflow-x: hidden;
+     }
+#video-player {
+    width: 100% !important;
+    height: 100% !important;
+ 
+}
+
+option {
+    background-color: black;
+}
+      </style>
+</head>
+<body>
+
+    <div id="video-player" style="width:500px; height: 300px;position: absolute;"></div>
+  <script>
+    
+var urlParams = new URLSearchParams(window.location.search);
+      var maxvalue=urlParams.get('max');
+
+
+
+      try {
+  const config = {
+    targetId: "video-player",
+    provider: {
+      partnerId: "1091",
+      uiConfId: "15215933"
+    }
+  };
+  var kalturaPlayer = KalturaPlayer.setup(config);
+  
+  kalturaPlayer.setMedia({
+    //use setMedia instead of loadMedia API
+    session: {
+      isAnonymous: true, //if ks is for anonymous or login
+      partnerId: 1234, //you partner id
+      uiConfId: 1234 //your uiconf
+    },
+    sources: {
+      //you can pass also only hls or only dash and as long as platform support it it will work
+      hls: [
+        {
+          url:
+           maxvalue,
+          mimetype: "application/x-mpegURL"
+        }
+      ],
+      progressive: [],
+      id: "1_r0tzzzgp", //entry ID
+      type: "Live", //either vod or live
+      poster: "", // poster url
+      dvr: false, //for live, if DVR or not
+      vr: null, //
+      metadata: {
+        name: "Live test for AWS", //entry name
+        description: ""
+      }
+    },
+    plugins: {
+      // secondaryUrl
+    }
+  });
+} catch (e) {
+  console.error(e.message);
+}
+  </script>
+</body>
+</html>

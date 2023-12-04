@@ -30,7 +30,7 @@
     <div class="topnav" id="myTopnav">
   <a href="index.php" >JioTv <i class="fa fa-home" aria-hidden="true"></i></a>
   <a href="sony.php" >Sony LIV <i class="fa fa-tv"></i></a>
-  <a href="zee.php">Zee5 <i class="fa fa-tv"></i></a>
+  <a href="zee5.php">Zee5 <i class="fa fa-tv"></i></a>
   <a href="discovery.php" > Discovery+ <i class="fa fa-tv"></i></a>
   <a href="shemaroo.php" >Shemaroo <i class="fa fa-tv"></i></a>
   <a href="voot.php" > Voot <i class="fa fa-tv"></i></a>

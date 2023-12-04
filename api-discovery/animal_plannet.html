@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+    <!--===================================BOOTSTRAP V5.2================================-->
+    <link href="./content/player.css" rel="stylesheet">
+    <!--===================================BOOTSTRAP V5.2================================-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!--===================================ICONS================================-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+    <title>D+ [SpidyMax]</title>
+<style>
+    .jw-button-container{
+
+bottom: 0%;
+
+width: 100%;
+    
+    }
+
+      .jw-wrapper {
+    background-color: #000;
+    position: fixed  !important;
+   
+}
+
+.jw-logo{
+  display: none;
+}
+</style>
+
+</head>
+
+<body>
+
+  <!--===========Video Player=============-->
+	<div id="container">
+   
+    <video>
+
+    </video>
+  </div>
+
+
+
+     <!--==========================Scripts [Bootstrap - Jquery v3.6]=======================-->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+     <script src="//content.jwplatform.com/libraries/Jq6HIbgz.js"></script>
+
+     <script>
+
+      var urlParams = new URLSearchParams(window.location.search);
+      var maxvalue=urlParams.get('max');
+      
+
+jwplayer("container").setup({
+
+controls: true,
+displaytitle: true,
+fullscreen: true,
+primary: 'html5',
+stretching: "extrafit",
+autostart: true,
+quality:"auto",
+volume:"100",
+
+
+skin: {
+  name: 'Netflix',
+},
+
+//sharing: {
+  //sites: ["reddit","facebook","twitter"]
+//},
+ 
+captions: {
+    color: '#FFF',
+     fontSize: 14,
+     backgroundOpacity: 0,
+     edgeStyle: 'raised' 
+},
+
+playlist: [
+
+,
+//Begin Movies Truyen Ky Ly Tieu Long Tap 1
+{        
+title: "",
+description: "Truyền Kỳ Lý Tiểu Long Tập 01 720P VietSub EngSub",
+image: "https://cdn.vietsubtv.org/images/film/truyen-ky-ly-tieu-long-5726.jpg",
+sources: [{
+file: "./Animal_Planet.m3u8",
+  label: '4K',
+  'type': 'mp4',
+  primary: 'html5',
+
+}]/*,
+captions: [{
+  file: "https://dl.dropboxusercontent.com/s/utoble457jxeexc/the-legend-of-bruce-lee-S01E01-vn.srt",
+  label: 'Vietnamese',
+  kind: "captions",
+  "default": true,
+}],*/
+
+}//end of movies 
+
+
+/*==========================================Start To Copy ======================================
+,
+//Begin Movies Truyen Ky Ly Tieu Long Tap 1
+{        
+title: "Truyền Kỳ Lý Tiểu Long Tập 01 720P VietSub EngSub",
+description: "Truyền Kỳ Lý Tiểu Long Tập 01 720P VietSub EngSub",
+image: "https://cdn.vietsubtv.org/images/film/truyen-ky-ly-tieu-long-5726.jpg",
+sources: [{
+file: "https://lmil.live-s.cdn.bitgravity.com/cdn-live/_definst_/lmil/live/aajtak_app.smil/playlist.m3u8",
+  label: '4K',
+  'type': 'mp4',
+  primary: 'html5',
+
+}],
+captions: [{
+  file: "https://dl.dropboxusercontent.com/s/utoble457jxeexc/the-legend-of-bruce-lee-S01E01-vn.srt",
+  label: 'Vietnamese',
+  kind: "captions",
+  "default": true,
+}],
+
+}//end of movies 
+,
+==========================================Start To Copy ======================================*/
+
+
+//==========================================Paste Here
+
+
+
+
+
+
+
+
+
+
+]
+});
+
+
+
+jwplayer("container").setCaptions({
+"back": true,
+"backgroundOpacity": "32",
+"edgeStyle": "dropshadow",
+"fontSize": 14,
+"fontOpacity": 100,
+"fontScale": 0.05,
+"windowOpacity": 0,
+"color": "#ffff00"
+});
+    </script>
+ 
+ </body>
+ </html>

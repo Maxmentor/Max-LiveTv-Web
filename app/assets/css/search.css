@@ -1,0 +1,142 @@
+/* 
+* Copyright 2021-2023 SnehTV, Inc.
+* Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
+* Created By : TechieSneh
+*/
+.info span{
+  margin-top:1rem !important;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  color: #fff;
+}
+
+#userButtons {
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+  }
+
+  #jtvh1 {
+    margin-bottom: 10px;
+  }
+
+  #jtvh1 img {
+    width: 45px;
+  }
+
+  #userButtons {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  #userButtons button {
+    font-size: 16px;
+  }
+}
+
+/* FILTERS CSS */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+label {
+  margin-right: 10px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  label {
+    margin-bottom: 5px;
+  }
+
+  select {
+    width: 100%;
+  }
+}
+
+/* LOGIN BUTTON CSS */
+#userButtons {
+  font-size: 14px;
+  font-family: fantasy;
+  text-align-last: center;
+}
+
+#loginButton {
+  border-radius: 10px;
+  border: 2px solid #f0f0f0;
+}
+
+#loginButton:hover {
+  background-color: #3cc700;
+  border: 3px solid #3cc700;
+}
+
+#logoutButton {
+  border-radius: 10px;
+  border: 2px solid #f0f0f0;
+}
+
+#logoutButton:hover {
+  background-color: #ff5252;
+  border: 3px solid #ff5252;
+}
+
+#PlayListButton {
+  border-radius: 10px;
+  border: 2px solid #f0f0f0;
+}
+
+#PlayListButton:hover {
+  background-color: #ffe552;
+  border: 3px solid #ffe552;
+}
+
+/* SEARCH BAR CSS */
+#searchBar {
+  width: 45%;
+  height: 35px;
+  border-radius: 16px;
+  border: 1px solid #eaeaea;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-family: fantasy;
+  margin-left: 28%;
+}
+
+#searchWrapper {
+  position: relative;
+}
+
+#searchWrapper::after {
+  content: "🔍";
+  position: absolute;
+  top: 7px;
+  right: 29%;
+}

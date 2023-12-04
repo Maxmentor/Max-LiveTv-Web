@@ -1,0 +1,25 @@
+#EXTM3U x-tvg-url="https://github.com/mitthu786/tvepg/releases/download/latest/epg.xml.gz"
+#EXTINF:-1 tvg-logo="https://ap2-prod-images.disco-api.com/2020/12/17/328f4c6f-e0be-4c88-a39f-e19facc0bc0b.png" tvg-chno="1" group-title="YASHRAJ",Discovery Channel
+https://pknraj.buzz/api/discovery/Discovery_Channel.m3u8
+#EXTINF:-1 tvg-logo="https://ap2-prod-images.disco-api.com/2020/12/17/6bfada34-767b-4654-a6a2-526173c6da8c.png" tvg-chno="2" group-title="YASHRAJ",Animal Planet
+https://pknraj.buzz/api/discovery/Animal_Planet.m3u8
+#EXTINF:-1 tvg-logo="https://ap2-prod-images.disco-api.com/2020/12/16/0ab4383a-aa67-4166-aeb6-fcc1c6e02e66.png" tvg-chno="3" group-title="YASHRAJ",Discovery Science
+https://pknraj.buzz/api/discovery/Discovery_Science.m3u8
+#EXTINF:-1 tvg-logo="https://ap2-prod-images.disco-api.com/2020/12/16/644fb820-4583-4141-b251-bb2a70f2ca80.png" tvg-chno="4" group-title="YASHRAJ",TLC
+https://pknraj.buzz/api/discovery/TLC.m3u8
+#EXTINF:-1 tvg-logo="https://ap2-prod-images.disco-api.com/2020/12/16/8104e113-f6d2-46b2-85e2-c2c497eb8307.png" tvg-chno="5" group-title="YASHRAJ",Discovery Turbo
+https://pknraj.buzz/api/discovery/Discovery_Turbo.m3u8
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/4/41/InvestigationDiscovery.png" tvg-chno="6" group-title="YASHRAJ",Investigation Discovery
+https://pknraj.buzz/api/discovery/Investigation_Discovery.m3u8
+#EXTINF:-1 tvg-chno="7" tvg-logo="https://ap2-prod-images.disco-api.com/2020/12/17/d187c23d-46da-4a59-8929-7534b7a01c0c.png" group-title="YASHRAJ",Eurosport
+https://pknraj.buzz/api/discovery/Eurosport.m3u8
+#EXTINF:-1 tvg-logo="https://ap2-prod-images.disco-api.com/2020/12/16/a297d103-9ac7-4a10-8359-1e65abb625cc.png" tvg-chno="8" group-title="YASHRAJ",DMAX
+https://pknraj.buzz/api/discovery/DMAX.m3u8
+#EXTINF:-1 tvg-logo="https://ap2-prod-images.disco-api.com/2020/12/05/967c038f-8703-4f64-9446-5a9032c86c87.png" tvg-chno="9" group-title="YASHRAJ",TRVL Channel
+https://pknraj.buzz/api/discovery/TRVL_Channel.m3u8
+#EXTINF:-1 tvg-logo="https://ap2-prod-images.disco-api.com/2020/12/17/df769200-cd93-420a-834a-f0426323787e.png" tvg-chno="10" group-title="YASHRAJ",HGTV
+https://pknraj.buzz/api/discovery/HGTV.m3u8
+#EXTINF:-1 tvg-logo="https://ap2-prod-images.disco-api.com/2020/12/16/512a525a-6841-4a53-bd25-22f5f055dd1a.png" tvg-chno="11" group-title="YASHRAJ",Food Network
+https://pknraj.buzz/api/discovery/Food%20Network.m3u8
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/2016_Discovery_Kids_logo.svg/1200px-2016_Discovery_Kids_logo.svg.png" tvg-chno="12" group-title="YASHRAJ",Discovery Kids
+https://pknraj.buzz/api/discovery/Discovery_Kids.m3u8

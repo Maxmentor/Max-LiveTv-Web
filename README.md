@@ -1,4 +1,4 @@
-<p align='center'><img src="https://ik.imagekit.io/techiesneh/tv_logo/jtv-plus_TMaGGk6N0.png" width="120"></p>
+<p align='center'><img src="https://i.ibb.co/v1jdHNV/IMG-20231205-130752-813.jpg" width="120"></p>
 
 <!--
 * Copyright 2021-2023 SnehTV, Inc.

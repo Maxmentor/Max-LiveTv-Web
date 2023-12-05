@@ -16,6 +16,7 @@ Through LocalHost <br><br>🌟 Star This Repository Before Forking 😎<br>Don't
 
 - JOIN TELEGRAM CHANNEL
 - https://t.me/maxmentor
+- https://t.me/spidyworld_official
 
 <h3>😇 SCRIPT FEATURES :</h3>
 

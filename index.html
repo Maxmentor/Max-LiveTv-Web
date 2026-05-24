@@ -1,0 +1,606 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLIX PRO | Prime UI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* PRIME VIDEO THEME */
+        :root {
+            --bg-base: #0f171e;       /* Prime Dark Blue Background */
+            --bg-card: #1a242f;       /* Prime Card Background */
+            --bg-hover: #252e39;      
+            --text-main: #f2f2f2;     /* Pure White text */
+            --text-muted: #8197a4;    /* Grayish blue text */
+            --prime-blue: #00a8e1;    /* Prime Signature Blue */
+            --prime-blue-hover: #008cc0;
+            --border: #303c4b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Initial Full-Screen Loader */
+        .initial-loader-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--bg-base);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999; 
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border);
+            border-top-color: var(--prime-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        .loading-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes spin { 
+            100% { transform: rotate(360deg); } 
+        }
+
+        /* --- FIXED TOP NAVIGATION (Header + Search + Category) --- */
+        .sticky-top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(15, 23, 30, 0.98); /* Prime base color with slight transparency */
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            color: var(--prime-blue);
+        }
+
+        .controls-container {
+            display: flex;
+            gap: 15px;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-select {
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            outline: none;
+            cursor: pointer;
+            width: 30%;
+            max-width: 200px;
+        }
+
+        .category-select:focus {
+            border-color: var(--prime-blue);
+        }
+
+        .search-bar {
+            flex: 1;
+            padding: 12px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar:focus {
+            border-color: var(--prime-blue);
+            background: #1e2a36;
+        }
+
+        .search-bar::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* --- GRID LAYOUT --- */
+        .playlist-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 25px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .playlist-container {
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            }
+        }
+
+        /* Prime Video Style Card */
+        .channel-card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            border: 2px solid transparent; /* Hidden border for hover */
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .channel-card:hover {
+            transform: scale(1.03);
+            border-color: var(--prime-blue); /* Prime Blue Border on Hover */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+            z-index: 2;
+        }
+
+        .poster-container {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .poster-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background-color: #000;
+            transition: opacity 0.3s;
+        }
+
+        .poster-fallback {
+            font-size: 40px;
+            color: var(--border);
+        }
+
+        .card-content {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .channel-name {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 0 0 15px 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.4;
+            color: var(--text-main);
+        }
+
+        .watch-btn {
+            margin-top: auto;
+            background: var(--prime-blue);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .watch-btn:hover {
+            background: var(--prime-blue-hover);
+        }
+
+        .watch-btn::before {
+            content: '▶';
+            font-size: 12px;
+        }
+
+        .loader {
+            text-align: center;
+            padding: 20px;
+            display: none;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* --- Modal (Player Chooser) --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal {
+            background: var(--bg-card);
+            width: 90%;
+            max-width: 320px;
+            border-radius: 12px;
+            padding: 25px 20px;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5);
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .modal h3 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            color: var(--text-main);
+        }
+
+        .install-notice {
+            background: rgba(229, 9, 20, 0.1);
+            color: #ef4444; /* Keep error red */
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(229, 9, 20, 0.3);
+        }
+
+        .player-option {
+            display: block;
+            background: var(--prime-blue); 
+            color: #fff;
+            text-decoration: none;
+            padding: 14px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            border: none;
+            transition: 0.2s;
+        }
+
+        .player-option:hover {
+            background: var(--prime-blue-hover);
+        }
+
+        .player-option-secondary {
+            display: block;
+            background: transparent;
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 14px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            border: 1px solid var(--text-muted);
+            transition: 0.2s;
+        }
+
+        .player-option-secondary:hover {
+            background: var(--bg-hover);
+            border-color: var(--text-main);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            margin-top: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 8px;
+            font-size: 14px;
+        }
+        .close-modal:hover {
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Initial Full-Screen Loader -->
+    <div class="initial-loader-overlay" id="initialLoader">
+        <div class="spinner"></div>
+        <div class="loading-text">Loading FLIX PRO...</div>
+    </div>
+
+    <!-- FIXED TOP BAR -->
+    <div class="sticky-top-bar">
+        <div class="header">
+            <h1 class="logo">FLIX<span>PRO</span></h1>
+        </div>
+        <div class="controls-container">
+            <select class="category-select" id="categoryFilter">
+                <option value="All">All Categories</option>
+            </select>
+            <input type="text" id="searchInput" class="search-bar" placeholder="Find channels, movies...">
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="playlist-container" id="playlist">
+        <!-- Cards will load here -->
+    </div>
+    
+    <div class="loader" id="loader">Loading more content...</div>
+
+    <!-- Player Chooser Modal -->
+    <div class="modal-overlay" id="playerModal">
+        <div class="modal">
+            <h3>Choose Player</h3>
+            <div class="install-notice">⚠️ You must install VLC media player</div>
+            
+            <a href="#" class="player-option" id="btn-vlc">Open in VLC</a>
+            <a href="#" class="player-option-secondary" id="btn-default">System Default Player</a>
+            
+            <button class="close-modal" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        const M3U_URL = "http://geoiptv.one:8880/get.php?username=2fd53ce1&password=2bc63aa3&type=m3u_plus&output=m3u8";
+        
+        let allChannels = [];
+        let filteredChannels = [];
+        let categories = new Set();
+        let currentIndex = 0;
+        const CHUNK_SIZE = 20; 
+        let isLoading = false;
+
+        const playlistContainer = document.getElementById('playlist');
+        const loader = document.getElementById('loader');
+        const initialLoader = document.getElementById('initialLoader');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const searchInput = document.getElementById('searchInput');
+
+        window.onload = async () => {
+            await fetchAndParseM3U();
+        };
+
+        async function fetchAndParseM3U() {
+            try {
+                const response = await fetch(M3U_URL);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder('utf-8');
+                let remainingText = '';
+
+                let currentChannel = { name: 'Unknown', logo: '', group: 'Uncategorized' };
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+
+                    const chunk = decoder.decode(value, { stream: true });
+                    remainingText += chunk;
+                    let lines = remainingText.split(/\r?\n/);
+                    remainingText = lines.pop(); 
+
+                    for (let line of lines) {
+                        line = line.trim();
+                        if (!line) continue;
+
+                        if (line.startsWith('#EXTINF:')) {
+                            const logoMatch = line.match(/tvg-logo="([^"]+)"/i);
+                            currentChannel.logo = logoMatch ? logoMatch[1] : '';
+
+                            const groupMatch = line.match(/group-title="([^"]+)"/i);
+                            currentChannel.group = groupMatch ? groupMatch[1] : 'Uncategorized';
+
+                            const parts = line.split(',');
+                            currentChannel.name = parts.length > 1 ? parts[parts.length - 1].trim() : 'Unknown Channel';
+                            
+                        } else if (!line.startsWith('#')) {
+                            
+                            allChannels.push({
+                                name: currentChannel.name,
+                                logo: currentChannel.logo,
+                                group: currentChannel.group,
+                                url: line
+                            });
+                            
+                            if(currentChannel.group) categories.add(currentChannel.group);
+                            
+                            currentChannel = { name: 'Unknown', logo: '', group: 'Uncategorized' };
+                        }
+                    }
+                }
+
+                // SORTING LOGIC: "IN:" priority
+                allChannels.sort((a, b) => {
+                    const aIsIN = a.name.toUpperCase().includes('IN:') || a.group.toUpperCase().includes('IN:');
+                    const bIsIN = b.name.toUpperCase().includes('IN:') || b.group.toUpperCase().includes('IN:');
+                    
+                    if (aIsIN && !bIsIN) return -1;
+                    if (!aIsIN && bIsIN) return 1;  
+                    return 0; 
+                });
+
+                populateCategories();
+                filteredChannels = allChannels; 
+                
+                initialLoader.style.display = 'none';
+                renderNextBatch();
+
+            } catch (error) {
+                initialLoader.innerHTML = `<div style="color:#ef4444; text-align:center; padding: 20px;">
+                    <h3>Failed to load content</h3>
+                    <p>Ensure you have network access or a CORS extension if testing on PC.</p>
+                </div>`;
+                console.error(error);
+            }
+        }
+
+        function populateCategories() {
+            let categoriesArray = Array.from(categories);
+            categoriesArray.sort((a, b) => {
+                const aIsIN = a.toUpperCase().includes('IN:');
+                const bIsIN = b.toUpperCase().includes('IN:');
+                if (aIsIN && !bIsIN) return -1;
+                if (!aIsIN && bIsIN) return 1;
+                return a.localeCompare(b);
+            });
+
+            categoriesArray.forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat;
+                option.textContent = cat;
+                categoryFilter.appendChild(option);
+            });
+        }
+
+        function applyFilters() {
+            const selectedCategory = categoryFilter.value;
+            const searchQuery = searchInput.value.toLowerCase().trim();
+
+            filteredChannels = allChannels.filter(c => {
+                const matchCategory = (selectedCategory === 'All' || c.group === selectedCategory);
+                const matchSearch = c.name.toLowerCase().includes(searchQuery);
+                return matchCategory && matchSearch;
+            });
+            
+            playlistContainer.innerHTML = '';
+            currentIndex = 0;
+            window.scrollTo(0, 0);
+            renderNextBatch();
+        }
+
+        categoryFilter.addEventListener('change', applyFilters);
+        searchInput.addEventListener('input', applyFilters);
+
+        function renderNextBatch() {
+            if (currentIndex >= filteredChannels.length) {
+                if(filteredChannels.length === 0) {
+                    playlistContainer.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted);">No channels found.</div>`;
+                }
+                return;
+            }
+            
+            isLoading = true;
+            loader.style.display = 'block';
+
+            const fragment = document.createDocumentFragment();
+            const endIndex = Math.min(currentIndex + CHUNK_SIZE, filteredChannels.length);
+
+            for (let i = currentIndex; i < endIndex; i++) {
+                const channel = filteredChannels[i];
+                
+                const card = document.createElement('div');
+                card.className = 'channel-card';
+                
+                const posterDiv = document.createElement('div');
+                posterDiv.className = 'poster-container';
+                if (channel.logo) {
+                    const img = document.createElement('img');
+                    img.src = channel.logo;
+                    img.loading = "lazy"; 
+                    img.onerror = () => { posterDiv.innerHTML = '<div class="poster-fallback">📺</div>'; };
+                    posterDiv.appendChild(img);
+                } else {
+                    posterDiv.innerHTML = '<div class="poster-fallback">📺</div>';
+                }
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'card-content';
+                
+                const nameDiv = document.createElement('div');
+                nameDiv.className = 'channel-name';
+                nameDiv.textContent = channel.name;
+                
+                const watchBtn = document.createElement('button');
+                watchBtn.className = 'watch-btn';
+                watchBtn.textContent = 'Watch Now';
+                watchBtn.onclick = () => openPlayerModal(channel.url);
+
+                contentDiv.appendChild(nameDiv);
+                contentDiv.appendChild(watchBtn);
+                
+                card.appendChild(posterDiv);
+                card.appendChild(contentDiv);
+                fragment.appendChild(card);
+            }
+
+            playlistContainer.appendChild(fragment);
+            currentIndex = endIndex;
+            
+            isLoading = false;
+            loader.style.display = 'none';
+        }
+
+        window.addEventListener('scroll', () => {
+            if (isLoading) return;
+            if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 400) {
+                renderNextBatch();
+            }
+        });
+
+        // --- Modal & Intents Logic ---
+        const modal = document.getElementById('playerModal');
+        const btnVlc = document.getElementById('btn-vlc');
+        const btnDefault = document.getElementById('btn-default');
+
+        function openPlayerModal(streamUrl) {
+            btnVlc.href = `intent:${streamUrl}#Intent;package=org.videolan.vlc;type=video/*;end`;
+            btnDefault.href = `intent:${streamUrl}#Intent;action=android.intent.action.VIEW;type=video/*;end`;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+    </script>
+</body>
+</html>

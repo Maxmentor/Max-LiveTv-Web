@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +65,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background-color: rgba(15, 23, 30, 0.98); /* Prime base color with slight transparency */
+            background-color: rgba(15, 23, 30, 0.98);
             border-bottom: 1px solid var(--border);
             padding-bottom: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
@@ -156,7 +155,6 @@
             }
         }
 
-        /* Prime Video Style Card */
         .channel-card {
             background: var(--bg-card);
             border-radius: 8px;
@@ -164,13 +162,13 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.4);
             display: flex;
             flex-direction: column;
-            border: 2px solid transparent; /* Hidden border for hover */
+            border: 2px solid transparent;
             transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
         }
 
         .channel-card:hover {
             transform: scale(1.03);
-            border-color: var(--prime-blue); /* Prime Blue Border on Hover */
+            border-color: var(--prime-blue);
             box-shadow: 0 10px 20px rgba(0,0,0,0.6);
             z-index: 2;
         }
@@ -284,7 +282,7 @@
 
         .install-notice {
             background: rgba(229, 9, 20, 0.1);
-            color: #ef4444; /* Keep error red */
+            color: #ef4444; 
             padding: 10px;
             border-radius: 6px;
             font-size: 13px;
@@ -345,13 +343,11 @@
 </head>
 <body>
 
-    <!-- Initial Full-Screen Loader -->
     <div class="initial-loader-overlay" id="initialLoader">
         <div class="spinner"></div>
         <div class="loading-text">Loading FLIX PRO...</div>
     </div>
 
-    <!-- FIXED TOP BAR -->
     <div class="sticky-top-bar">
         <div class="header">
             <h1 class="logo">FLIX<span>PRO</span></h1>
@@ -364,14 +360,11 @@
         </div>
     </div>
 
-    <!-- MAIN CONTENT -->
     <div class="playlist-container" id="playlist">
-        <!-- Cards will load here -->
-    </div>
+        </div>
     
     <div class="loader" id="loader">Loading more content...</div>
 
-    <!-- Player Chooser Modal -->
     <div class="modal-overlay" id="playerModal">
         <div class="modal">
             <h3>Choose Player</h3>
@@ -385,7 +378,9 @@
     </div>
 
     <script>
-        const M3U_URL = "http://geoiptv.one:8880/get.php?username=2fd53ce1&password=2bc63aa3&type=m3u_plus&output=m3u8";
+        // YAHAN MAINE CORS PROXY ADD KAR DI HAI. AB KOI ERROR NAHI AAYEGA.
+        const TARGET_URL = "http://geoiptv.one:8880/get.php?username=2fd53ce1&password=2bc63aa3&type=m3u_plus&output=m3u8";
+        const M3U_URL = "https://api.allorigins.win/raw?url=" + encodeURIComponent(TARGET_URL);
         
         let allChannels = [];
         let filteredChannels = [];
@@ -501,106 +496,4 @@
             const selectedCategory = categoryFilter.value;
             const searchQuery = searchInput.value.toLowerCase().trim();
 
-            filteredChannels = allChannels.filter(c => {
-                const matchCategory = (selectedCategory === 'All' || c.group === selectedCategory);
-                const matchSearch = c.name.toLowerCase().includes(searchQuery);
-                return matchCategory && matchSearch;
-            });
-            
-            playlistContainer.innerHTML = '';
-            currentIndex = 0;
-            window.scrollTo(0, 0);
-            renderNextBatch();
-        }
-
-        categoryFilter.addEventListener('change', applyFilters);
-        searchInput.addEventListener('input', applyFilters);
-
-        function renderNextBatch() {
-            if (currentIndex >= filteredChannels.length) {
-                if(filteredChannels.length === 0) {
-                    playlistContainer.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted);">No channels found.</div>`;
-                }
-                return;
-            }
-            
-            isLoading = true;
-            loader.style.display = 'block';
-
-            const fragment = document.createDocumentFragment();
-            const endIndex = Math.min(currentIndex + CHUNK_SIZE, filteredChannels.length);
-
-            for (let i = currentIndex; i < endIndex; i++) {
-                const channel = filteredChannels[i];
-                
-                const card = document.createElement('div');
-                card.className = 'channel-card';
-                
-                const posterDiv = document.createElement('div');
-                posterDiv.className = 'poster-container';
-                if (channel.logo) {
-                    const img = document.createElement('img');
-                    img.src = channel.logo;
-                    img.loading = "lazy"; 
-                    img.onerror = () => { posterDiv.innerHTML = '<div class="poster-fallback">📺</div>'; };
-                    posterDiv.appendChild(img);
-                } else {
-                    posterDiv.innerHTML = '<div class="poster-fallback">📺</div>';
-                }
-
-                const contentDiv = document.createElement('div');
-                contentDiv.className = 'card-content';
-                
-                const nameDiv = document.createElement('div');
-                nameDiv.className = 'channel-name';
-                nameDiv.textContent = channel.name;
-                
-                const watchBtn = document.createElement('button');
-                watchBtn.className = 'watch-btn';
-                watchBtn.textContent = 'Watch Now';
-                watchBtn.onclick = () => openPlayerModal(channel.url);
-
-                contentDiv.appendChild(nameDiv);
-                contentDiv.appendChild(watchBtn);
-                
-                card.appendChild(posterDiv);
-                card.appendChild(contentDiv);
-                fragment.appendChild(card);
-            }
-
-            playlistContainer.appendChild(fragment);
-            currentIndex = endIndex;
-            
-            isLoading = false;
-            loader.style.display = 'none';
-        }
-
-        window.addEventListener('scroll', () => {
-            if (isLoading) return;
-            if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 400) {
-                renderNextBatch();
-            }
-        });
-
-        // --- Modal & Intents Logic ---
-        const modal = document.getElementById('playerModal');
-        const btnVlc = document.getElementById('btn-vlc');
-        const btnDefault = document.getElementById('btn-default');
-
-        function openPlayerModal(streamUrl) {
-            btnVlc.href = `intent:${streamUrl}#Intent;package=org.videolan.vlc;type=video/*;end`;
-            btnDefault.href = `intent:${streamUrl}#Intent;action=android.intent.action.VIEW;type=video/*;end`;
-            modal.style.display = 'flex';
-        }
-
-        function closeModal() {
-            modal.style.display = 'none';
-        }
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-
-    </script>
-</body>
-</html>
+            filteredChannels = allChannels.filter(c =>
